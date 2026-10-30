@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Дом в Жуковке — 620 м², Рублёво-Успенское шоссе</title>
+    <meta
+      name="description"
+      content="Современный дом 620 м² на участке 11 соток в посёлке Жуковка, 8 км от МКАД. Пролёт по дому, интерьеры, характеристики и контакты брокера."
+    />
+    <meta property="og:title" content="Дом в Жуковке — 620 м²" />
+    <meta
+      property="og:description"
+      content="Пролёт по дому, интерьеры и характеристики. Рублёво-Успенское шоссе, 8 км от МКАД."
+    />
+    <meta property="og:image" content="img/fasad.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Golos+Text:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="img/fasad.jpg" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="bar" id="bar">
+      <a class="brand" href="#top" data-scroll>Дом в Жуковке</a>
+      <nav class="nav" aria-label="Разделы">
+        <a href="#flight" data-scroll>Пролёт</a>
+        <a href="#interiors" data-scroll>Интерьеры</a>
+        <a href="#about" data-scroll>О доме</a>
+        <a href="#gallery" data-scroll>Галерея</a>
+        <a href="#place" data-scroll>Расположение</a>
+      </nav>
+      <a class="btn btn-solid bar-call" href="#contacts" data-scroll
+        >Связаться</a
+      >
+    </header>
+
+    <main>
+      <!-- 1. Обложка -->
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-media">
+          <img
+            src="img/fasad.jpg"
+            alt="Фасад дома: белые складчатые консоли крыши, дерево и сосны"
+            id="heroImg"
+          />
+        </div>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-body">
+          <p class="hero-place">
+            <span class="line"
+              ><span>Посёлок Жуковка, правая сторона</span></span
+            >
+          </p>
+          <h1 id="hero-title">
+            <span class="line"><span>Дом</span></span
+            ><span class="line"><span>в&nbsp;Жуковке</span></span>
+          </h1>
+          <p class="hero-lead">
+            <span class="line"
+              ><span
+                >Современный дом по проекту британского архитектурного бюро.
+                Отделка «под ключ», мебель, SPA.</span
+              ></span
+            >
+          </p>
+        </div>
+        <dl class="spec" aria-label="Главное об объекте">
+          <div>
+            <dt>Дом</dt>
+            <dd>620 м²</dd>
+          </div>
+          <div>
+            <dt>Участок</dt>
+            <dd>11 соток</dd>
+          </div>
+          <div>
+            <dt>Спальни</dt>
+            <dd>4</dd>
+          </div>
+          <div>
+            <dt>До МКАД</dt>
+            <dd>8 км</dd>
+          </div>
+          <div class="spec-price">
+            <dt>Цена</dt>
+            <dd>$5 700 000</dd>
+          </div>
+        </dl>
+        <a class="hero-down" href="#flight" data-scroll
+          >Пролетите по дому — крутите вниз</a
+        >
+      </section>
+
+      <!-- 2. Пролёт: видео перематывается прокруткой -->
+      <section class="flight" id="flight" aria-label="Пролёт по дому">
+        <div class="flight-stage" id="flightStage">
+          <canvas
+            class="flight-canvas"
+            id="flightCanvas"
+            aria-hidden="true"
+          ></canvas>
+          <video
+            id="flightVideo"
+            muted
+            playsinline
+            preload="none"
+            class="flight-src"
+            aria-hidden="true"
+          ></video>
+          <div class="flight-shade" aria-hidden="true"></div>
+
+          <ol class="rooms-caps" id="roomsCaps"></ol>
+
+          <nav class="chapters" aria-label="Комнаты пролёта">
+            <div class="chapters-track"><i id="chaptersFill"></i></div>
+            <ol id="chapters"></ol>
+          </nav>
+
+          <div class="flight-load" id="flightLoad" role="status">
+            <span>Загружаем пролёт</span><b id="flightPct">0%</b>
+            <i><em id="flightBar"></em></i>
+          </div>
+          <p class="flight-note">
+            Видео-пролёт создан нейросетью по фотографиям дома
+          </p>
+        </div>
+      </section>
+
+      <!-- 3. Второй этаж и SPA: фото-фильм -->
+      <section class="interiors" id="interiors" aria-label="Второй этаж и SPA">
+        <div class="film-stage" id="filmStage">
+          <div class="film-shots" id="filmShots"></div>
+          <div class="film-shade" aria-hidden="true"></div>
+          <p class="film-kicker">Второй этаж и SPA</p>
+          <div class="film-caps" id="filmCaps"></div>
+          <div class="film-hud">
+            <span class="film-count"
+              ><b id="filmCur">01</b> из <span id="filmTotal">10</span></span
+            >
+            <ol class="film-segs" id="filmSegs" aria-label="Комнаты"></ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. О доме -->
+      <section class="about cut-top" id="about" aria-labelledby="about-title">
+        <div class="wrap">
+          <div class="about-head">
+            <h2 id="about-title">О доме</h2>
+            <p class="about-lead">
+              Современный эффектный дом, построенный по проекту известного
+              британского архитектурного бюро. Отделка из экологичных
+              материалов, продуманная планировка и дизайнерское оформление.
+              Интерьер выполнен в светлых тонах из премиальных материалов:
+              просторные комнаты, высокие потолки, панорамное остекление
+              наполняет дом солнцем.
+            </p>
+          </div>
+
+          <dl class="facts">
+            <div>
+              <dt>Готовность</dt>
+              <dd>«Под ключ» с мебелью</dd>
+            </div>
+            <div>
+              <dt>Этажей</dt>
+              <dd>2</dd>
+            </div>
+            <div>
+              <dt>Спален</dt>
+              <dd>4</dd>
+            </div>
+            <div>
+              <dt>Санузлов</dt>
+              <dd>6</dd>
+            </div>
+            <div>
+              <dt>SPA</dt>
+              <dd>Купель, сауна, хаммам</dd>
+            </div>
+            <div>
+              <dt>Квартира для персонала</dt>
+              <dd>Есть</dd>
+            </div>
+            <div>
+              <dt>Газ</dt>
+              <dd>Магистральный</dd>
+            </div>
+            <div>
+              <dt>Водоснабжение</dt>
+              <dd>Центральное</dd>
+            </div>
+            <div>
+              <dt>Электричество</dt>
+              <dd>30 кВт</dd>
+            </div>
+          </dl>
+
+          <div class="floors">
+            <article class="floor">
+              <h3>1-й этаж</h3>
+              <p>
+                Холл, гардеробная, гостиная, санузел, столовая, кухня, холл,
+                кабинет, спальня, санузел, холл.
+              </p>
+              <p>
+                <strong>Зона SPA:</strong> купель, сауна, хаммам, душ, санузел,
+                комната отдыха, бильярдная, раздевалка, коридор, постирочная, 2
+                технических помещения.
+              </p>
+            </article>
+            <article class="floor">
+              <h3>2-й этаж</h3>
+              <p>
+                Холл, главная спальня, гардероб, ванная комната, спальня,
+                санузел, холл, спальня, санузел.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Галерея -->
+      <section class="gallery" id="gallery" aria-labelledby="gallery-title">
+        <div class="wrap">
+          <h2 id="gallery-title">Галерея</h2>
+          <p class="section-lead">
+            Все фотографии объекта. Нажмите на снимок, чтобы открыть его на весь
+            экран.
+          </p>
+          <ul class="grid" id="grid"></ul>
+        </div>
+      </section>
+
+      <!-- 6. Расположение -->
+      <section class="place cut-top" id="place" aria-labelledby="place-title">
+        <div class="wrap place-wrap">
+          <div class="place-text">
+            <h2 id="place-title">Расположение</h2>
+            <p class="section-lead">
+              Посёлок Жуковка, правая сторона. Рублёво-Успенское шоссе, 8 км от
+              МКАД.
+            </p>
+            <a
+              class="btn btn-line"
+              href="https://yandex.ru/maps/?ll=37.2507%2C55.7432&amp;z=13"
+              target="_blank"
+              rel="noopener"
+              >Открыть на Яндекс Картах</a
+            >
+          </div>
+          <div class="map">
+            <iframe
+              title="Карта: посёлок Жуковка"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=37.185%2C55.722%2C37.315%2C55.765&amp;layer=mapnik"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Контакты -->
+      <section class="contacts" id="contacts" aria-labelledby="contacts-title">
+        <div class="wrap contacts-wrap">
+          <div>
+            <h2 id="contacts-title">Посмотреть дом вживую</h2>
+            <p class="section-lead">
+              Объект представляет брокер агентства «Высота Риэлти». Номер
+              объекта — 10988.
+            </p>
+          </div>
+          <div class="broker">
+            <p class="broker-name">Евгений Пресняков</p>
+            <p class="broker-role">Брокер, «Высота Риэлти»</p>
+            <a class="broker-phone" href="tel:+79035561014"
+              >+7 (903) 556-10-14</a
+            >
+            <p class="broker-addr">
+              Московская область, Рублёво-Успенское ш., д. Жуковка, 71, БЦ
+              «Олимп»
+            </p>
+            <div class="broker-actions">
+              <a class="btn btn-solid" href="tel:+79035561014"
+                >Позвонить брокеру</a
+              >
+              <a
+                class="btn btn-line"
+                href="https://vysota-realty.ru"
+                target="_blank"
+                rel="noopener"
+                >Сайт агентства</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>
+        Презентация подготовлена по материалам объекта № 10988 агентства «Высота
+        Риэлти». Видео-пролёт создан нейросетью по фотографиям дома и показывает
+        интерьеры условно; точная планировка — у брокера.
+      </p>
+    </footer>
+
+    <dialog class="lightbox" id="lightbox" aria-label="Просмотр фотографии">
+      <img id="lbImg" alt="" />
+      <p id="lbCap"></p>
+      <button
+        class="lb-btn lb-close"
+        id="lbClose"
+        type="button"
+        aria-label="Закрыть"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+      <button
+        class="lb-btn lb-prev"
+        id="lbPrev"
+        type="button"
+        aria-label="Предыдущее фото"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M15 5l-7 7 7 7" />
+        </svg>
+      </button>
+      <button
+        class="lb-btn lb-next"
+        id="lbNext"
+        type="button"
+        aria-label="Следующее фото"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </dialog>
+
+    <script src="vendor/gsap.min.js"></script>
+    <script src="vendor/ScrollTrigger.min.js"></script>
+    <script src="vendor/lenis.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
